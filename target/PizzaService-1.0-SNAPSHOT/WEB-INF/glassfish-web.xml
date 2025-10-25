@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    ===========================================================
+    GLASSFISH-WEB.XML – SERVER-SPEZIFISCHE KONFIGURATION
+    ===========================================================
+    PROJEKT: PizzaService (Java-Webanwendung)
+    ZWECK:
+      Diese Datei enthält GlassFish-spezifische Einstellungen 
+      für das Web-Modul (WAR). Sie ergänzt die web.xml und legt 
+      insbesondere JSP- und Encoding-Parameter fest.
+
+    INHALT:
+      • <class-loader>          – legt das Delegationsverhalten des ClassLoaders fest.
+      • <jsp-config>            – definiert JSP-spezifische Kompilierungsoptionen.
+      • <parameter-encoding>    – sorgt für UTF-8-Zeichencodierung bei Requests/Responses.
+
+    BEDEUTUNG:
+      - "keepgenerated = true": behält den generierten Java-Code der JSPs (nützlich beim Debugging)
+      - "delegate = true": lässt GlassFish zuerst nach System-/Bibliotheksklassen suchen
+      - "UTF-8": sichert korrekte Darstellung von Umlauten und Sonderzeichen
+
+    AUTOR: Simone Njike
+    DATUM: 24.10.2025
+    VERSION: 1.1
+    SERVER: GlassFish / Payara
+-->
+
+<!DOCTYPE glassfish-web-app PUBLIC
+    "-//GlassFish.org//DTD GlassFish Application Server 3.1 Servlet 3.0//EN"
+    "http://glassfish.org/dtds/glassfish-web-app_3_0-1.dtd">
+
+<glassfish-web-app error-url="">
+  
+  <!-- ========================================================= -->
+  <!-- Abschnitt 1: Class Loader-Konfiguration                    -->
+  <!-- ========================================================= -->
+  <!-- Der delegierte ClassLoader prüft zuerst System- und 
+       Server-Bibliotheken, bevor er lokale Klassen lädt. -->
+  <class-loader delegate="true"/>
+
+  <!-- ========================================================= -->
+  <!-- Abschnitt 2: JSP-Konfiguration                             -->
+  <!-- ========================================================= -->
+  <!-- Beibehaltung des generierten Servlet-Codes für Debuggingzwecke -->
+  <jsp-config>
+    <property name="keepgenerated" value="true">
+      <description>
+        Behalte eine Kopie des aus JSPs generierten Java-Servlet-Codes.
+        Nützlich zur Fehlersuche und Optimierung.
+      </description>
+    </property>
+  </jsp-config>
+
+  <!-- ========================================================= -->
+  <!-- Abschnitt 3: Standard-Encoding                             -->
+  <!-- ========================================================= -->
+  <!-- Stellt sicher, dass Anfragen und Antworten im UTF-8-Format
+       verarbeitet werden, um Umlaute und Sonderzeichen korrekt
+       darzustellen. -->
+  <parameter-encoding default-charset="UTF-8"/>
+
+</glassfish-web-app>

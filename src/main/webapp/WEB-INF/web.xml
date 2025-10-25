@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    ===========================================================
+    WEB.XML – DEPLOYMENT DESCRIPTORS
+    ===========================================================
+    PROJEKT: PizzaService (Java Webanwendung)
+    BESCHREIBUNG:
+      Diese Konfigurationsdatei beschreibt die Basis-Einstellungen
+      der Webanwendung, wie z. B. Startseite, Session-Timeout und
+      JSP/Servlet-Verhalten.
+
+    STRUKTUR:
+      • <welcome-file-list>  – legt fest, welche JSP-Seite beim Start angezeigt wird.
+      • <session-config>     – definiert die Gültigkeitsdauer von HTTP-Sessions.
+
+    HINWEIS:
+      Die meisten Servlet-Definitionen werden durch Annotationen
+      (@WebServlet, @WebListener) direkt im Code verwaltet und müssen
+      daher hier nicht explizit eingetragen werden.
+
+    AUTOR: Simone Njike
+    DATUM: 24.10.2025
+    VERSION: 1.1
+    FRAMEWORK: Jakarta EE 10 (Servlet 6.0)
+-->
+
+<web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee 
+                             https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
+         version="6.0">
+
+    <!-- ========================================================= -->
+    <!-- Abschnitt 1: Startseite                                   -->
+    <!-- ========================================================= -->
+    <!-- Definiert, welche JSP-Seite beim Aufruf der Webanwendung
+         automatisch als erste angezeigt wird. -->
+    <welcome-file-list>
+        <welcome-file>startseite.jsp</welcome-file>
+    </welcome-file-list>
+
+    <!-- ========================================================= -->
+    <!-- Abschnitt 2: Sitzungsverwaltung                            -->
+    <!-- ========================================================= -->
+    <!-- Legt die maximale Inaktivitätsdauer einer Session in Minuten fest.
+         Nach Ablauf dieser Zeit wird die Sitzung automatisch beendet. -->
+    <session-config>
+        <session-timeout>30</session-timeout>
+    </session-config>
+
+</web-app>
