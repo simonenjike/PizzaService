@@ -34,6 +34,7 @@
     <title>🍳 Küche - Bestellübersicht</title>
 
     <style>
+        
         body {
             font-family: Arial, sans-serif;
             margin: 30px;
